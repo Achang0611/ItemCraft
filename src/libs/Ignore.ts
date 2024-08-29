@@ -1,17 +1,22 @@
-function ignoreFullOptions<T extends { [x: string]: any }>(
+function ignoreFullOptions<T extends Record<string, any>>(
     target: T,
     defo: T,
     options: { allowedNull: boolean; pass: (keyof T)[] }
 ) {
     return Object.entries(target).filter(([key, value]) => {
-        return (
-            (value != defo[key] && (value != undefined || options.allowedNull)) ||
-            options.pass.includes(key)
-        );
+        if (options.pass.includes(key)) {
+            return true;
+        }
+
+        if (value == undefined) {
+            return defo[key] == undefined && options.allowedNull;
+        }
+
+        return JSON.stringify(value) != JSON.stringify(defo[key]);
     });
 }
 
-export function ignore<T extends { [x: string]: any }>(
+export function ignore<T extends Record<string, any>>(
     target: T,
     defo: T,
     options?: { allowedNull?: boolean; pass?: (keyof T)[] }

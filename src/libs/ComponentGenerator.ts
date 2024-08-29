@@ -1,6 +1,6 @@
 import { ref, type Ref } from "vue";
 
-export const components: Ref<{ [x: string]: () => string }> = ref({});
+export const components: Ref<Record<string, () => string>> = ref({});
 
 export function generate() {
     let arg = "";

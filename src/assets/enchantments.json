@@ -39,14 +39,14 @@
         "description": "Items cannot be removed from armor slots.",
         "maxLevel": "1",
         "category": "Armor",
-        "id": "curse_of_binding"
+        "id": "binding_curse"
     },
     {
         "name": "Curse of Vanishing",
         "description": "Item disappears on death.",
         "maxLevel": "1",
         "category": "All applicable",
-        "id": "curse_of_vanishing"
+        "id": "vanishing_curse"
     },
     {
         "name": "Density",

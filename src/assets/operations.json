@@ -1,0 +1,14 @@
+[
+    {
+        "id": "add_value",
+        "name": "Number"
+    },
+    {
+        "id": "add_multiplied_base",
+        "name": "Scalar"
+    },
+    {
+        "id": "add_multiplied_total",
+        "name": "Scale"
+    }
+]

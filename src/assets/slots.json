@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Any",
+        "id": "any",
+        "equivalent": [
+            "armor",
+            "hand",
+            "mainhand",
+            "offhand",
+            "head",
+            "chest",
+            "legs",
+            "feet",
+            "body"
+        ]
+    },
+    { "name": "Armor", "id": "armor", "equivalent": ["head", "chest", "legs", "feet"] },
+    { "name": "Hand", "id": "hand", "equivalent": ["mainhand", "offhand"] },
+    { "name": "Main Hand", "id": "mainhand", "equivalent": [] },
+    { "name": "Off Hand", "id": "offhand", "equivalent": [] },
+    { "name": "Head", "id": "head", "equivalent": [] },
+    { "name": "Chest", "id": "chest", "equivalent": [] },
+    { "name": "Leggings", "id": "legs", "equivalent": [] },
+    { "name": "Feet", "id": "feet", "equivalent": [] },
+    { "name": "Body (For doge)", "id": "body", "equivalent": [] }
+]

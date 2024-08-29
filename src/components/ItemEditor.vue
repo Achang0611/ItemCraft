@@ -14,11 +14,12 @@ export class BasicItemInfo {
 </script>
 
 <script setup lang="ts">
+import { items, type Item } from "@/libs/asset-loader/ItemLoader";
 import { components, generate } from "@/libs/ComponentGenerator";
-import { items, type Item } from "@/libs/ItemLoader";
 import { jsonQuery } from "@/libs/Queries";
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import AttributeModifierEditor from "./editors/AttributeModifierEditor.vue";
 import EnchantmentEditor from "./editors/EnchantmentEditor.vue";
 import InfoEditor from "./editors/InfoEditor.vue";
 
@@ -56,7 +57,11 @@ function playerNameChange() {
     }
 }
 
-const editors: { [x: string]: any } = { Info: InfoEditor, Enchantment: EnchantmentEditor };
+const editors: Record<string, any> = {
+    Info: InfoEditor,
+    Enchantment: EnchantmentEditor,
+    "Attribute Modifier": AttributeModifierEditor
+};
 const currentEditor = ref(`Info`);
 </script>
 
@@ -106,7 +111,7 @@ const currentEditor = ref(`Info`);
                     />
                 </div>
             </div>
-            <!-- All editors -->
+            <!-- Editors and tab bars-->
             <div class="container row-span-10 mx-auto flex flex-col">
                 <!-- Tab bar -->
                 <div class="container mx-auto flex gap-1">
@@ -121,11 +126,10 @@ const currentEditor = ref(`Info`);
                     </button>
                 </div>
                 <!-- Editor -->
-                <div class="flex-grow overflow-hidden">
-                    <component
-                        :is="editors[currentEditor]"
-                        class="rounded-b border-2 border-black p-2"
-                    />
+                <div
+                    class="flex-grow overflow-hidden rounded-b rounded-tr border-2 border-black p-2"
+                >
+                    <component :is="editors[currentEditor]" />
                 </div>
             </div>
             <!-- Generated command -->

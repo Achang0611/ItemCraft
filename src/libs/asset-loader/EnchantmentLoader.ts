@@ -1,3 +1,5 @@
+import { load } from "./Loader";
+
 export interface Enchantment {
     id: string;
     name: string;
@@ -5,9 +7,7 @@ export interface Enchantment {
     maxLevel: number;
 }
 
-export const enchantments = (await fetch("src/assets/enchantments.json").then((res) =>
-    res.json()
-)) as Enchantment[];
+export const enchantments: Enchantment[] = await load("/src/assets/enchantments.json");
 
 export const categories = Array.from(
     new Set(

@@ -1,6 +1,6 @@
 <script lang="ts">
 class EnchantInfo {
-    enchantments: { [x: string]: number } = {};
+    enchantments: Record<string, number> = {};
     showInTooltip = true;
     enchantmentGlint = false;
 
@@ -13,15 +13,15 @@ class EnchantInfo {
 </script>
 
 <script setup lang="ts">
+import { categories, enchantments, type Enchantment } from "@/libs/asset-loader/EnchantmentLoader";
 import { components } from "@/libs/ComponentGenerator";
-import { categories, enchantments, type Enchantment } from "@/libs/EnchantmentLoader";
 import { jsonQuery } from "@/libs/Queries";
 import { ref, watch, type Ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const enchantInfo: Ref<EnchantInfo> = ref(jsonQuery("enchantInfo", new EnchantInfo()));
 
-const categoryToEnchantments: { [x: string]: Enchantment[] } = Object.fromEntries(
+const categoryToEnchantments: Record<string, Enchantment[]> = Object.fromEntries(
     categories.map((category) => {
         return [category, []];
     })
@@ -45,7 +45,11 @@ components.value["enchantments"] = () => {
         return "";
     }
 
-    return JSON.stringify(reduced);
+    if (enchantInfo.value.showInTooltip) {
+        return JSON.stringify(reduced);
+    }
+
+    return JSON.stringify({ levels: reduced, show_in_tooltip: false });
 };
 components.value["enchantment_glint_override"] = () => {
     var enchanted = components.value["enchantments"]() != "";

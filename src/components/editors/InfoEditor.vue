@@ -69,7 +69,7 @@ components.value["lore"] = () => {
 </script>
 
 <template>
-    <div class="container flex size-full flex-col">
+    <div class="flex size-full flex-col">
         <!-- Custom name -->
         <div class="mt-2">
             <input

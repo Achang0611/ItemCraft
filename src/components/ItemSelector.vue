@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { items, type Item } from "@/libs/ItemLoader";
+import { items, type Item } from "@/libs/asset-loader/ItemLoader";
 import Fuse from "fuse.js";
 import { ref, watch } from "vue";
 import { BasicItemInfo } from "./ItemEditor.vue";
@@ -25,7 +25,7 @@ function makeItem(item: Item) {
 
 <template>
     <!-- Search bar -->
-    <div class="container mx-auto mt-2 flex justify-center border-2 border-black p-2">
+    <div class="container mx-auto mt-2 flex justify-center rounded border-2 border-black p-2">
         <input
             type="text"
             class="size-3/4 rounded border-2 border-black p-2 text-3xl"
@@ -35,7 +35,7 @@ function makeItem(item: Item) {
     </div>
     <!-- Items -->
     <div
-        class="container m-2 mx-auto flex flex-row flex-wrap justify-center border-2 border-black p-2"
+        class="container m-2 mx-auto flex flex-row flex-wrap justify-center rounded border-2 border-black p-2"
     >
         <template v-for="item in filteredItems" :key="item">
             <div class="group m-2 rounded-lg border-4 border-black p-2 hover:bg-gray-500">
